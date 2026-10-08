@@ -416,22 +416,43 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
-
 /* ==========================================================================
-   MOBILE RESPONSIVENESS FIXES (Pixel & Phone Viewports)
+   MOBILE OVERFLOW & CONTAINER FIX
    ========================================================================== */
 @media (max-width: 768px) {
-    /* 1. Make the outer container stretch almost full-width on mobile */
-    .container {
-        width: 98% !important;
-        padding: 10px !important;
+    /* 1. Ensure the entire body and container never clip or cause side scroll */
+    body {
+        padding: 20px 0 !important;
+        overflow-x: hidden;
     }
 
-    /* 2. Slim down the inner padding of white boxes so text doesn't overflow */
+    .container {
+        width: 100% !important;
+        padding: 0 12px !important;
+        box-sizing: border-box;
+    }
+
+    /* 2. Turn off flex-row behavior on mobile for the about section */
+    .about-container {
+        display: block !important; /* Forces items to stack naturally */
+        width: 100% !important;
+    }
+
+    .about-text, .about-stats {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 3. Force all white cards to respect the screen boundaries and wrap text */
     .about-section, 
     .youtube-banner, 
     .service-card, 
     .contact-card {
-        padding: 20px 16px !important; /* Reduces side padding from 40px to 16px */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 24px 16px !important;
+        box-sizing: border-box !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }
