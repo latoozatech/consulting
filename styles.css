@@ -38,14 +38,14 @@ body {
     font-size: 3rem;
     color: #2A4D69;            
     letter-spacing: -0.08em;    
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: #475569;            /* Slightly lighter slate gray */
+    color: #475569;            
     max-width: 100%;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 30px auto;
 }
 
 /* CEI Accent Golden Section Headers */
@@ -149,9 +149,9 @@ body {
     box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08);
 }
 
-.service-card h3 {
+.service-card h3 {              /*Lets Work Together Section*/
     color: #1c395f;            /* Deep navy/slate header */
-    font-size: 1.5rem;
+    font-size: 1.69rem;
     font-weight: 500;
     margin-bottom: 14px;
     text-align: center;
@@ -292,6 +292,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .price-tag {
@@ -304,7 +305,7 @@ footer {
 
 .price-unit {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: #64748b;
     margin-top: 2px;
@@ -320,7 +321,7 @@ footer {
 }
 
 .curriculum-box h4 {
-    font-size: 0.95rem;
+    font-size: .98rem;
     color: #1c395f;
     margin-bottom: 8px;
     text-transform: uppercase;
@@ -337,7 +338,7 @@ footer {
     padding: 6px 0;
     border-bottom: 1px dashed #cbd5e1;
     color: #475569;
-    font-size: 0.9rem;
+    font-size: 0.98rem;
 }
 
 .feature-list li:last-child {
@@ -374,7 +375,7 @@ footer {
 
 .about-text p {
     margin-bottom: 16px;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #475569;
 }
 
@@ -413,5 +414,24 @@ footer {
     font-size: 0.9rem;
     color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS FIXES (Pixel & Phone Viewports)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Make the outer container stretch almost full-width on mobile */
+    .container {
+        width: 98% !important;
+        padding: 10px !important;
+    }
+
+    /* 2. Slim down the inner padding of white boxes so text doesn't overflow */
+    .about-section, 
+    .youtube-banner, 
+    .service-card, 
+    .contact-card {
+        padding: 20px 16px !important; /* Reduces side padding from 40px to 16px */
+    }
 }
