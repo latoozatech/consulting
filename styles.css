@@ -283,3 +283,135 @@ footer {
     font-size: 0.85rem;
     color: #94a3b8;
 }
+
+
+/* ==========================================================================
+   8. PRICING & CURRICULUM EXTENSIONS
+   ========================================================================== */
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.price-tag {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2A4D69;
+    margin: 10px 0 15px 0;
+    text-align: center;
+}
+
+.price-unit {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.curriculum-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.curriculum-box h4 {
+    font-size: 0.95rem;
+    color: #1c395f;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #cbd5e1;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list strong {
+    color: #2A4D69;
+}
+
+/* ==========================================================================
+   9. ABOUT ME SECTION
+   ========================================================================== */
+.about-section {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-text p {
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    color: #475569;
+}
+
+.about-stats {
+    flex: 1;
+    min-width: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two columns */
+    gap: 16px;
+}
+
+/* Make it stack in a single column on small mobile screens */
+@media (max-width: 600px) {
+    .about-stats {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.stat-box {
+    background-color: #f8fafc;
+    border-left: 4px solid #CD913B; /* Matches your gold accent */
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2A4D69;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
