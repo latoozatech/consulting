@@ -1,458 +1,453 @@
-@font-face {
-    font-family: 'Mona Sans';
-    font-style: normal;
-    font-display: swap;
-    font-weight: 200 900;
-    src: url("https://cdn.jsdelivr.net/fontsource/fonts/mona-sans:vf@5.3.0/latin-wght-normal.woff2") format("woff2-variations");
-}
 /* ==========================================================================
-   1. GLOBAL RESETS & SITE CANVAS (CEI Light Theme Backdrop)
+   1. FONTS & VARIABLES
    ========================================================================== */
+
+@font-face {
+  font-family: 'Mona Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/mona-sans:vf@5.3.0/latin-wght-normal.woff2") format("woff2-variations");
+}
+
+:root {
+  --navy: #2A4D69;
+  --deep: #1c395f;
+  --gold: #B07A22;
+  --bg: #f4f6f9;
+  --text: #334155;
+  --muted: #475569;
+  --line: #e2e8f0;
+}
+
+/* ==========================================================================
+   2. GLOBAL RESETS & BASE STYLES
+   ========================================================================== */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Mona Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    background-color: #f4f6f9; 
-    color: #334155;            
-    line-height: 1.6;
-    padding: 60px 0;
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px 0 50px;
 }
+
+/* ==========================================================================
+   3. LAYOUT & CONTAINERS
+   ========================================================================== */
 
 .container {
-    width: 92%;
-    max-width: 1350px;
-    margin: 0 auto;
-    padding: 20px;
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
 }
 
 /* ==========================================================================
-   2. TYPOGRAPHY & CORPORATE COLOR SCHEME
+   4. ACCESSIBILITY (KEYBOARD FOCUS)
    ========================================================================== */
-.hero h1 {
-    font-family: "Mona Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 500;
-    font-size: 3rem;
-    color: #2A4D69;            
-    letter-spacing: -0.08em;    
-    margin: 0px 0px 0px 0px;
-}
 
-.hero p {
-    font-size: 1.2rem;
-    color: #475569;            
-    max-width: 100%;
-    margin: 0 auto 30px auto;
-}
-
-/* CEI Accent Golden Section Headers */
-.section-title {
-    text-align: center;
-    
-    letter-spacing: -0.08em;
-    color: #CD913B;            
-    font-size: 2.25rem;         
-    font-weight: 500;
-    margin-top: 60px;
-    margin-bottom: 35px;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
-   3. THE CEI PROFILE CARD CONTAINER DESIGN
+   5. LANGUAGE SWITCHER
    ========================================================================== */
+
+.lang {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.lang a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.lang a[aria-current] {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+/* ==========================================================================
+   6. HERO & AVATAR
+   ========================================================================== */
+
 .hero {
-    text-align: center;
-    padding: 20px 0 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 0px;
 }
 
-/* Rounded rectangular profile box layout */
 .avatar-wrapper {
-    position: relative;
-    width: 220px;
-    height: 300px;
-    border-radius: 24px;       /* Smooth rounded card corners */
-    overflow: hidden;          /* Keeps everything securely clipped inside */
-    margin-bottom: 24px;
-    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
-    border: 2px solid #2A4D69; 
-    transition: border-color 0.4s ease; 
-    /* Crucial: Keeps the gradient layer stacked correctly on top of the image */
-    z-index: 1; 
+  position: relative;
+  width: 180px;
+  height: 240px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  border: 2px solid var(--navy);
+  transition: border-color .4s;
 }
 
-/* 3. ADDED: Switches the container boundary line to match your gold headings on hover */
 .avatar-wrapper:hover {
-    border-color: #CD913B;     /* Elegantly fades into your signature amber gold */
+  border-color: var(--gold);
 }
 
-/* 4. RETAINED: Your bottom-up fade gradient overlay remains 100% active */
 .avatar-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;               
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, rgba(25, 45, 71, 0) 100%);
-    pointer-events: none;      
-    
-    /* Ensures the gradient stays visible over the photo layer */
-    z-index: 2; 
+  content: '';
+  position: absolute;
+  inset: 60% 0 0 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, .8), transparent);
+  pointer-events: none;
 }
 
 .avatar-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);   /* Classic premium black & white filter */
-    transition: filter 0.4s ease;
-    
-    /* Places the image layer right underneath the gradient */
-    position: relative;
-    z-index: 1; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter .4s;
 }
 
-/* Interactive transition effect: turns to full color seamlessly on hover */
 .avatar-wrapper:hover .avatar-image {
-    filter: grayscale(0%);
-}
-
-
-/* ==========================================================================
-   4. SERVICES GRID & WHITE SURFACE CARDS
-   ========================================================================== */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 28px;
-    margin-bottom: 50px;
-}
-
-.service-card {
-    background-color: #ffffff; 
-    border: 1px solid #e2e8f0;   
-    border-radius: 16px;       /* Matched rounded profile element shape */
-    padding: 30px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    
-}
-
-.service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08);
-}
-
-.service-card h3 {              /*Lets Work Together Section*/
-    color: #1c395f;            /* Deep navy/slate header */
-    font-size: 1.69rem;
-    font-weight: 500;
-    margin-bottom: 14px;
-    text-align: center;
-    letter-spacing: -0.05em;
-}
-
-.service-card h3 span {
-    margin-right: 6px;
+  filter: none;
 }
 
 /* ==========================================================================
-   5. TUTORIAL BANNERS
+   7. TYPOGRAPHY
    ========================================================================== */
-.youtube-banner {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 40px;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+
+/* Headline size: clamp(phone, scales with screen, desktop max). Edit the last value. */
+h1 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  color: var(--navy);
+  letter-spacing: -.04em;
+  line-height: 1.2;
+  max-width: 800px;
 }
 
-.youtube-banner h3 {
-    color: #1c395f;
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    letter-spacing: -0.05em;
+.lead {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 800px;
+  margin: 14px auto 26px;
 }
 
-.youtube-banner p {
-    max-width: 100%;
-    margin: 0 auto 24px auto;
+.section-title {
+  text-align: center;
+  color: var(--gold);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -.04em;
+  margin: 60px 0 28px;
+}
+
+.small {
+  font-size: .9rem;
+  color: #64748b;
 }
 
 /* ==========================================================================
-   6. INTERACTIVE ACTION ACTIONS & BUTTON LAYOUTS
+   8. CARDS & CENTERED BLOCKS
    ========================================================================== */
-/* Center the main section wrapper */
 
-
-/* THE FIX: Replicates your sleek white YouTube banner box styling */
-/* Align the section container wrapper */
-.contact-section {
-    margin-top: 0px;
-    margin-bottom: 60px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px;
 }
 
-/* The clean white box framing just the form invitation content */
-.contact-card {
-    background-color: #ffffff; 
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;       /* Uniform rounded corners matching YouTube banner */
-    padding: 40px;
-    text-align: center;
-    width: 100%;               
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;       /* Perfectly centers the subtitle and button inside */
+.center {
+  text-align: center;
 }
 
-/* Tightly spaced description subtitle inside the white card */
-.contact-subtitle {
-    margin-bottom: 24px;
-    color: #475569;            /* Sharp corporate slate gray */
-    font-size: 1.15rem;
-    max-width: 100%;
+.center p {
+  max-width: 56ch;
+  margin: 0 auto 18px;
+  color: var(--muted);
 }
 
+/* ==========================================================================
+   9. VIDEO
+   ========================================================================== */
 
+/* Video width: change max-width (640px smaller, 800px larger). */
+.video {
+  aspect-ratio: 16 / 9;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==========================================================================
+   10. FORMS
+   ========================================================================== */
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+input[type=email] {
+  flex: 1 1 240px;
+  max-width: 340px;
+  padding: 13px 14px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  font: inherit;
+}
+
+/* ==========================================================================
+   11. OFFERS (LESSONS & COHORT)
+   ========================================================================== */
+
+.offer {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer h3 {
+  color: var(--deep);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  text-align: center;
+}
+
+.offer p {
+  margin: 14px 0;
+}
+
+.offer ul {
+  list-style: none;
+  margin: 6px 0 22px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.offer li {
+  padding: 7px 0;
+  border-bottom: 1px dashed #cbd5e1;
+  color: var(--muted);
+}
+
+.offer li:last-child {
+  border: 0;
+}
+
+.offer .btn {
+  margin-top: auto;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.unit {
+  display: block;
+  font-size: .85rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   12. BUTTONS
+   ========================================================================== */
 
 .btn {
-    display: inline-block;
-    padding: 14px 36px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 8px;
-    width: auto;
-    min-width: 240px;
-    max-width: 320px;
-    text-align: center;
-    transition: all 0.2s ease;
+  display: inline-block;
+  padding: 13px 30px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
 }
 
-/* Target Dark Navy Blue Button */
 .btn-primary {
-    background-color: #1e3a8a !important; 
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(30, 58, 138, 0.18);
-    border: none;
+  background: var(--deep);
+  color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #712b02 !important; 
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.28);
+  background: #12294a;
+  transform: translateY(-1px);
 }
 
-/* Subtle slate gray secondary ghost action button */
 .btn-secondary {
-    background-color: #ffffff;
-    color: #475569;
-    border: 1px solid #cbd5e1;
+  background: #fff;
+  color: var(--deep);
+  border-color: #94a3b8;
 }
 
 .btn-secondary:hover {
-    background-color: #f1010134;
-    border-color: #94a3b8;
-    color: #1e293b;
-    transform: translateY(-1px);
+  background: #eef2f7;
+  border-color: var(--navy);
 }
 
 /* ==========================================================================
-   7. FOOTER
+   13. TESTIMONIALS
    ========================================================================== */
-footer {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 24px;
-    border-top: 1px solid #e2e8f0;
-    font-size: 0.85rem;
-    color: #94a3b8;
+
+blockquote {
+  font-size: 1.05rem;
+  color: var(--muted);
 }
 
-
-/* ==========================================================================
-   8. PRICING & CURRICULUM EXTENSIONS
-   ========================================================================== */
-.pricing-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
+blockquote cite {
+  display: block;
+  margin-top: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--deep);
 }
 
-.price-tag {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #2A4D69;
-    margin: 10px 0 15px 0;
-    text-align: center;
+/* Placeholder styling: delete these two blocks once real testimonials are in. */
+.placeholder {
+  border: 2px dashed #b45309;
 }
 
-.price-unit {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #64748b;
-    margin-top: 2px;
-}
-
-.curriculum-box {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px;
-    margin: 20px 0;
-    text-align: left;
-}
-
-.curriculum-box h4 {
-    font-size: .98rem;
-    color: #1c395f;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.feature-list li {
-    padding: 6px 0;
-    border-bottom: 1px dashed #cbd5e1;
-    color: #475569;
-    font-size: 0.98rem;
-}
-
-.feature-list li:last-child {
-    border-bottom: none;
-}
-
-.feature-list strong {
-    color: #2A4D69;
+.tag {
+  display: inline-block;
+  background: #fef3c7;
+  color: #78350f;
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 /* ==========================================================================
-   9. ABOUT ME SECTION
+   14. ABOUT
    ========================================================================== */
-.about-section {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 40px;
-    margin-bottom: 50px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+
+/* Card fills the full container width, same as the signup card. */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  align-items: center;
 }
 
-.about-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
+.about-id {
+  flex: 1 1 260px;
+  background: #f8fafc;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 20px;
+}
+
+.about-id h3 {
+  color: var(--navy);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin-bottom: 8px;
+}
+
+.about-id .role {
+  font-size: .85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .03em;
 }
 
 .about-text {
-    flex: 2;
-    min-width: 300px;
+  flex: 2 1 320px;
 }
 
 .about-text p {
-    margin-bottom: 16px;
-    font-size: 1.15rem;
-    color: #475569;
+  margin-bottom: 14px;
+  max-width: 65ch;
 }
 
-.about-stats {
-    flex: 1;
-    min-width: 250px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates two columns */
-    gap: 16px;
-}
-
-/* Make it stack in a single column on small mobile screens */
-@media (max-width: 600px) {
-    .about-stats {
-        grid-template-columns: 1fr; 
-    }
-}
-
-.stat-box {
-    background-color: #f8fafc;
-    border-left: 4px solid #CD913B; /* Matches your gold accent */
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-}
-
-.stat-number {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #2A4D69;
-    line-height: 1;
-    margin-bottom: 4px;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
 /* ==========================================================================
-   MOBILE OVERFLOW & CONTAINER FIX
+   15. FOOTER
    ========================================================================== */
-@media (max-width: 768px) {
-    /* 1. Ensure the entire body and container never clip or cause side scroll */
-    body {
-        padding: 20px 0 !important;
-        overflow-x: hidden;
-    }
 
-    .container {
-        width: 100% !important;
-        padding: 0 12px !important;
-        box-sizing: border-box;
-    }
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: .9rem;
+  color: #64748b;
+}
 
-    /* 2. Turn off flex-row behavior on mobile for the about section */
-    .about-container {
-        display: block !important; /* Forces items to stack naturally */
-        width: 100% !important;
-    }
+footer a {
+  color: var(--navy);
+  margin: 0 8px;
+}
 
-    .about-text, .about-stats {
-        width: 100% !important;
-        box-sizing: border-box;
-    }
+/* 15. HOW IT WORKS */
 
-    /* 3. Force all white cards to respect the screen boundaries and wrap text */
-    .about-section, 
-    .youtube-banner, 
-    .service-card, 
-    .contact-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 24px 16px !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
+.step-n {
+  display: block;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.step h3 {
+  color: var(--deep);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  margin-bottom: 8px;
+}
+#free {
+  margin-top: 60px;
 }
